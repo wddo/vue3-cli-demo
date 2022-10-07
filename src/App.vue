@@ -3,16 +3,23 @@
     alt="Vue logo"
     src="./assets/logo.png"
   >
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+
+  <DynamicHeading level="4">
+    Welcome to Your Vue.js App
+  </DynamicHeading>
+
+  <DefaultComp />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import DefaultComp from "./layouts/DefaultComp";
+import DynamicHeading from "./components/DynamicHeading";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    DefaultComp,
+    DynamicHeading,
   },
 };
 </script>

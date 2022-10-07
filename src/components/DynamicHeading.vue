@@ -19,4 +19,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+h4 {
+  padding: 1rem;
+}
+</style>
