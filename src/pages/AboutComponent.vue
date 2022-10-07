@@ -1,9 +1,11 @@
 <template>
-  <Suspense>
+  <Suspense timeout="0">
     <component
       :is="page"
       v-if="page"
-    />
+    >
+      inner
+    </component>
 
     <template #fallback>
       <LoadingComponent />
@@ -15,7 +17,7 @@
 import { defineAsyncComponent, Suspense, h } from "vue";
 
 const LoadingComponent = () => {
-  return h("div", null, "loading ...");
+  return h("div", { class: [{ loading: true }] }, "loading ...");
 };
 
 const PHistory = defineAsyncComponent({
@@ -26,7 +28,7 @@ const PHistory = defineAsyncComponent({
 
 const PCompany = defineAsyncComponent({
   loader: () => {
-    return import("./about/p_company.vue");
+    return import("./about/p_company");
   },
 });
 
@@ -47,4 +49,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.loading {
+  color: red;
+}
+</style>
