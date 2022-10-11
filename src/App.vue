@@ -1,27 +1,18 @@
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  >
-
-  <DynamicHeading level="4">
-    Welcome to Your Vue.js App
-  </DynamicHeading>
-
-  <DefaultComp />
+  <nav>
+    <router-link to="/">
+      Home
+    </router-link>
+    |
+    <router-link to="/test">
+      Test
+    </router-link>
+  </nav>
+  <router-view />
 </template>
 
 <script>
-import DefaultComp from "./layouts/DefaultComp";
-import DynamicHeading from "./components/DynamicHeading";
-
-export default {
-  name: "App",
-  components: {
-    DefaultComp,
-    DynamicHeading,
-  },
-};
+export default {};
 </script>
 
 <style>
@@ -32,5 +23,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+nav {
+  padding: 1rem;
 }
 </style>
