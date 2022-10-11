@@ -22,13 +22,13 @@ const LoadingComponent = () => {
 
 const PHistory = defineAsyncComponent({
   loader: () => {
-    return import("./about/p_history.vue");
+    return import("@/views/about/p_history.vue");
   },
 });
 
 const PCompany = defineAsyncComponent({
   loader: () => {
-    return import("./about/p_company");
+    return import("@/views/about/p_company");
   },
 });
 

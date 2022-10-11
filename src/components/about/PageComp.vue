@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import AboutComponent from "../pages/AboutComponent.vue";
+import AboutComponent from "@/views/AboutView.vue";
 
 export default {
   components: {

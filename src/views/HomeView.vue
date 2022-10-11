@@ -8,18 +8,29 @@
     Welcome to Your Vue.js App
   </DynamicHeading>
 
-  <DefaultComp />
+  <div>
+    <UserComp v-model="myName" />
+    <div class="wrap">
+      <PageComp />
+    </div>
+  </div>
 </template>
 
 <script>
-import DefaultComp from "../layouts/DefaultComp";
-import DynamicHeading from "../components/DynamicHeading";
+import DynamicHeading from "@/components/DynamicHeading";
+import PageComp from "@/components/about/PageComp.vue";
+import UserComp from "@/components/about/UserComp.vue";
 
 export default {
-  name: "App",
   components: {
-    DefaultComp,
+    UserComp,
+    PageComp,
     DynamicHeading,
+  },
+  data() {
+    return {
+      myName: "",
+    };
   },
 };
 </script>
