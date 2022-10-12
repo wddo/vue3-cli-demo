@@ -1,56 +1,53 @@
 <template>
-  <Suspense timeout="0">
-    <component
-      :is="page"
-      v-if="page"
-    >
-      inner
-    </component>
-
-    <template #fallback>
-      <LoadingComponent />
-    </template>
-  </Suspense>
+  <nav>
+    <ul>
+      <li>
+        <button @click="changePage('history-view')">
+          history
+        </button>
+      </li>
+      <li>
+        <button @click="changePage('company-view')">
+          company
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <hr>
+  <SubView :page="currentPage" />
 </template>
 
 <script>
-import { defineAsyncComponent, Suspense, h } from "vue";
-
-const LoadingComponent = () => {
-  return h("div", { class: [{ loading: true }] }, "loading ...");
-};
-
-const PHistory = defineAsyncComponent({
-  loader: () => {
-    return import("@/views/about/p_history.vue");
-  },
-});
-
-const PCompany = defineAsyncComponent({
-  loader: () => {
-    return import("@/views/about/p_company");
-  },
-});
+import SubView from "@/views/about/SubView";
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
   components: {
-    Suspense,
-    LoadingComponent,
-    PHistory,
-    PCompany,
+    SubView,
   },
-  props: {
-    page: {
-      type: String,
-      default: null,
+  data() {
+    return {
+      currentPage: "history-view",
+    };
+  },
+  methods: {
+    changePage(page) {
+      this.currentPage = page;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.loading {
-  color: red;
+nav {
+  margin-top: 1rem;
+
+  ul {
+    display: flex;
+    justify-content: center;
+
+    > li {
+      padding: 1rem;
+    }
+  }
 }
 </style>
