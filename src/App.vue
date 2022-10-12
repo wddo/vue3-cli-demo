@@ -8,6 +8,9 @@
     </router-link> |
     <router-link to="/composition">
       Composition
+    </router-link> |
+    <router-link to="/teleport">
+      Teleport
     </router-link>
   </nav>
   <router-view />
@@ -23,8 +26,6 @@ export default {};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
 nav {

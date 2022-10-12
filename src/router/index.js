@@ -21,6 +21,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/CompositionView.vue"),
   },
+  {
+    path: "/teleport",
+    name: "teleport",
+    component: () => import("@/views/TeleportView.vue"),
+  },
 ];
 
 const router = createRouter({
