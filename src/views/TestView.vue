@@ -1,8 +1,9 @@
 <template>
-  <UserRepositories :user="user" />
   <button @click="user = 'ddoeng'">
     change user
   </button>
+
+  <UserRepositories :user="user" />
 </template>
 
 <script>

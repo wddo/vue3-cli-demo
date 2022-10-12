@@ -1,11 +1,12 @@
 <template>
+  <span class="userName">{{ user }}</span>
   <div>
     <div class="filters">
       <RepositoriesFilters />
       <RepositoriesSortBy />
     </div>
     <hr>
-    <RepositoriesList />
+    <RepositoriesList :repositories="repositories" />
   </div>
 </template>
 
@@ -14,8 +15,10 @@ import RepositoriesFilters from "@/components/repositories/RepositoriesFilters.v
 import RepositoriesSortBy from "@/components/repositories/RepositoriesSortBy.vue";
 import RepositoriesList from "@/components/repositories/RepositoriesList.vue";
 
-import { fetchUserRepositories } from "@/api/repositories";
-import { onMounted, ref, watch, toRefs, computed } from "vue";
+import useUserRepositories from "@/composables/repositories/useUserRepositories";
+import useRepositoryNameSearch from "@/composables/repositories/useRepositoryNameSearch";
+
+import { toRefs } from "vue";
 
 export default {
   components: { RepositoriesFilters, RepositoriesSortBy, RepositoriesList },
@@ -23,28 +26,16 @@ export default {
     user: { type: String, default: "" },
   },
   setup(props) {
-    let repositories = ref([]);
     let { user } = toRefs(props);
 
-    const getUserRepositories = async () => {
-      repositories.value = await fetchUserRepositories(props.user);
-    };
-
-    onMounted(getUserRepositories);
-    watch(user, getUserRepositories);
-
-    const searchQuery = ref("");
-    const repositoriesMatchingSearchQuery = computed(() => {
-      return repositories.value.filter((repository) =>
-        repository.name.include(searchQuery.value)
-      );
-    });
+    const { repositories, getUserRepositories } = useUserRepositories(user);
+    const { searchQuery, repositoriesMatchingSearchQuery } =
+      useRepositoryNameSearch(repositories);
 
     return {
-      repositories,
+      repositories: repositoriesMatchingSearchQuery,
       getUserRepositories,
       searchQuery,
-      repositoriesMatchingSearchQuery,
     };
   },
   data() {
@@ -67,8 +58,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.userName {
+  margin-left: 0.5rem;
+}
+
 .filters {
   display: flex;
   justify-content: space-around;
+  margin-top: 1rem;
 }
 </style>
