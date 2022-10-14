@@ -1,5 +1,5 @@
 <template>
-  <span>user: {{ userId }}</span>
+  <span class="user">user: {{ userId }}</span>
   <button @click="clickHandler">
     login
   </button>
@@ -33,5 +33,10 @@ export default {
 <style lang="scss" scoped>
 button {
   margin-left: 0.5rem;
+}
+
+.user {
+  padding: 1rem;
+  background-color: pink;
 }
 </style>

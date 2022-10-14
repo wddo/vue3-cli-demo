@@ -5,7 +5,7 @@
   >
 
   <DynamicHeading level="4">
-    Welcome to Your Vue.js App
+    <span class="title">Welcome to Your Vue.js App</span>
   </DynamicHeading>
 
   <div>
@@ -29,3 +29,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+::v-deep(.user) {
+  background-color: lightseagreen;
+}
+</style>

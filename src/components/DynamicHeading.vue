@@ -5,6 +5,9 @@
   >
     <slot />
   </component>
+  <button @click="clickColorBtn">
+    change color
+  </button>
 </template>
 
 <script>
@@ -16,11 +19,35 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      color: "red",
+    };
+  },
+  methods: {
+    clickColorBtn() {
+      this.color = "blue";
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 h4 {
+  display: inline-block;
   padding: 1rem;
+  color: v-bind(color);
+}
+
+button {
+  display: inline-block;
+}
+
+::v-slotted(.title) {
+  font-weight: 600;
+}
+
+::v-global(nav) {
+  border: 1px solid gray;
 }
 </style>
