@@ -3,6 +3,9 @@
     <router-link to="/">
       Home
     </router-link> |
+    <router-link to="/auth">
+      Auth
+    </router-link> |
     <router-link to="/about">
       About
     </router-link> |
@@ -11,24 +14,34 @@
     </router-link> |
     <router-link to="/teleport">
       Teleport
+    </router-link> |
+    <router-link to="/booking">
+      Booking
     </router-link>
   </nav>
   <router-view />
 </template>
 
-<script>
-export default {};
+<script setup>
+import { onBeforeMount } from "vue";
+import { refreshToken } from "@/api/auth";
+
+onBeforeMount(() => {
+  console.log("onBeforeMount");
+  refreshToken();
+});
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-}
 
-nav {
-  padding: 1rem;
+  > nav {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 </style>
