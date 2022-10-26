@@ -27,8 +27,12 @@ import { onBeforeMount } from "vue";
 import { refreshToken } from "@/api/auth";
 
 onBeforeMount(() => {
-  console.log("onBeforeMount");
-  refreshToken();
+  console.log("app onBeforeMount");
+
+  if ($cookies && $cookies.get("isLogin")) {
+    console.log("refresh isLogin", $cookies.get("isLogin"));
+    refreshToken();
+  }
 });
 </script>
 

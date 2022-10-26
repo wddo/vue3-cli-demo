@@ -23,9 +23,10 @@ export const onlogin = async (data) => {
 };
 
 export const refreshToken = () => {
-  //onLoginSucces();
+  onLoginSucces();
 };
 
 const onLoginSucces = (token) => {
   axios.defaults.headers["Authorization"] = `Basic YWRtaW46cGFzc3dvcmQxMjM=`;
+  if ($cookies) $cookies.set("isLogin", true, "5min");
 };
