@@ -1,4 +1,7 @@
 <template>
+  <button @click="increment">
+    count 증가
+  </button>
   <div>RepositoriesList</div>
   <ul>
     <li
@@ -11,12 +14,16 @@
 </template>
 
 <script>
+import { increment } from "@/store/store";
 export default {
   props: {
     repositories: {
       type: Array,
       default: Array.from({ length: 0 }),
     },
+  },
+  methods: {
+    increment,
   },
 };
 </script>
