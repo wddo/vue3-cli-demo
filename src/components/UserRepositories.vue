@@ -28,13 +28,12 @@ export default {
   setup(props) {
     let { user } = toRefs(props);
 
-    const { repositories, getUserRepositories } = useUserRepositories(user);
+    const { repositories } = useUserRepositories(user);
     const { searchQuery, repositoriesMatchingSearchQuery } =
       useRepositoryNameSearch(repositories);
 
     return {
       repositories: repositoriesMatchingSearchQuery,
-      getUserRepositories,
       searchQuery,
     };
   },
