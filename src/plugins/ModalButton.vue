@@ -2,7 +2,7 @@
   <button @click="modalOpen = true">
     Open full screen modal!!
   </button>
-  <DimModal v-model:opener="modalOpen" />
+  <DimModal v-model:opener.slim="modalOpen" />
 </template>
 
 <script setup>

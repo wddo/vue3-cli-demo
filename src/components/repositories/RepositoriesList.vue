@@ -13,19 +13,15 @@
   </ul>
 </template>
 
-<script>
+<script setup>
 import { increment } from "@/store/store";
-export default {
-  props: {
-    repositories: {
-      type: Array,
-      default: Array.from({ length: 0 }),
-    },
+
+defineProps({
+  repositories: {
+    type: Array,
+    default: Array.from({ length: 0 }),
   },
-  methods: {
-    increment,
-  },
-};
+});
 </script>
 
 <style lang="scss" scoped>

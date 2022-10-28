@@ -27,6 +27,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    openerModifiers: {
+      type: Object,
+      default: () => {},
+    },
   },
   emits: ["update:opener"],
   computed: {
@@ -38,6 +42,9 @@ export default {
         return this.opener;
       },
     },
+  },
+  mounted() {
+    console.log(this.openerModifiers);
   },
 };
 </script>
