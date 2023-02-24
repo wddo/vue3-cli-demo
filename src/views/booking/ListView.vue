@@ -35,12 +35,25 @@
       v-for="(user, idx) in bookingData"
       :key="`booking-data-${idx}`"
     >
-      <span>{{
-        `${user.bookingId} : ${user.firstname} ${user.lastname}`
-      }}</span>
-      <button @click="del(user.bookingId)">
-        삭제
-      </button>
+      <span>{{ `${user.bookingId}` }}</span>
+      <div class="inputWrap">
+        <input
+          type="text"
+          :value="user.firstname"
+          readonly
+        >
+        <input
+          type="text"
+          :value="user.lastname"
+          readonly
+        >
+      </div>
+      <div class="btnWrap">
+        <button>수정</button>
+        <button @click="del(user.bookingId)">
+          삭제
+        </button>
+      </div>
     </li>
   </ul>
 </template>
@@ -109,8 +122,19 @@ ul.books {
       margin-left: 1rem;
     }
 
-    > button {
+    .inputWrap {
+      input:read-only {
+        border: none;
+        background-color: none;
+      }
+    }
+
+    > .btnWrap {
       margin-left: auto;
+
+      > button:not(:first-child) {
+        margin-left: 0.4rem;
+      }
     }
 
     &:not(:last-child) {
